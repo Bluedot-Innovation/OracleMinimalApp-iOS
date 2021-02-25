@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */; };
 		91670575226F330800789E45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9167056F226F330800789E45 /* UIKit.framework */; };
 		91670576226F330800789E45 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670570226F330800789E45 /* CoreLocation.framework */; };
 		91670577226F330800789E45 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670571226F330800789E45 /* SystemConfiguration.framework */; };
@@ -16,7 +17,6 @@
 		919BEADC2276B7A500EC9410 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919BEADB2276B7A500EC9410 /* Empty.swift */; };
 		919BEAF122795B0400EC9410 /* BDPointSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF022795B0400EC9410 /* BDPointSDK.framework */; };
 		919BEAF222795B0B00EC9410 /* BDPointSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF022795B0400EC9410 /* BDPointSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		919BEAF4227A613D00EC9410 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF3227A613D00EC9410 /* PushIOManager.framework */; };
 		919BEAF7227A621100EC9410 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF6227A621100EC9410 /* libsqlite3.0.tbd */; };
 		919BEAF9227A624700EC9410 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF8227A624700EC9410 /* UserNotifications.framework */; };
 		919BEAFB227A628200EC9410 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAFA227A628100EC9410 /* WebKit.framework */; };
@@ -44,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
 		9167056F226F330800789E45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91670570226F330800789E45 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		91670571226F330800789E45 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -53,7 +54,6 @@
 		919BEADA2276B7A500EC9410 /* BDHelloPointSDk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BDHelloPointSDk-Bridging-Header.h"; sourceTree = "<group>"; };
 		919BEADB2276B7A500EC9410 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		919BEAF022795B0400EC9410 /* BDPointSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BDPointSDK.framework; path = Carthage/Build/iOS/BDPointSDK.framework; sourceTree = "<group>"; };
-		919BEAF3227A613D00EC9410 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushIOManager.framework; path = BDHelloPointSDk/PushIOManager.framework; sourceTree = "<group>"; };
 		919BEAF5227A61CC00EC9410 /* BDHelloPointSDk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BDHelloPointSDk.entitlements; sourceTree = "<group>"; };
 		919BEAF6227A621100EC9410 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		919BEAF8227A624700EC9410 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -79,9 +79,9 @@
 				919BEAFB227A628200EC9410 /* WebKit.framework in Frameworks */,
 				919BEAF9227A624700EC9410 /* UserNotifications.framework in Frameworks */,
 				919BEAF7227A621100EC9410 /* libsqlite3.0.tbd in Frameworks */,
-				919BEAF4227A613D00EC9410 /* PushIOManager.framework in Frameworks */,
 				91670575226F330800789E45 /* UIKit.framework in Frameworks */,
 				91670576226F330800789E45 /* CoreLocation.framework in Frameworks */,
+				78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */,
 				91670577226F330800789E45 /* SystemConfiguration.framework in Frameworks */,
 				919BEAF122795B0400EC9410 /* BDPointSDK.framework in Frameworks */,
 				91670578226F330800789E45 /* CoreData.framework in Frameworks */,
@@ -96,10 +96,10 @@
 		9167056E226F330700789E45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */,
 				919BEAFA227A628100EC9410 /* WebKit.framework */,
 				919BEAF8227A624700EC9410 /* UserNotifications.framework */,
 				919BEAF6227A621100EC9410 /* libsqlite3.0.tbd */,
-				919BEAF3227A613D00EC9410 /* PushIOManager.framework */,
 				919BEAF022795B0400EC9410 /* BDPointSDK.framework */,
 				91670572226F330800789E45 /* CoreData.framework */,
 				91670570226F330800789E45 /* CoreLocation.framework */,
@@ -370,7 +370,6 @@
 		91F022D3226F252A002F2EFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -384,6 +383,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/BDHelloPointSDk",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BDHelloPointSDk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -401,7 +401,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluedotinnovation.BDHelloPointSDk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = OracleMinApp;
+				PROVISIONING_PROFILE_SPECIFIER = "Oracle Development Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "BDHelloPointSDk/BDHelloPointSDk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -413,7 +413,6 @@
 		91F022D4226F252A002F2EFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -427,6 +426,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/BDHelloPointSDk",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BDHelloPointSDk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -440,7 +440,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluedotinnovation.BDHelloPointSDk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = OracleMinApp;
+				PROVISIONING_PROFILE_SPECIFIER = "Oracle Development Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "BDHelloPointSDk/BDHelloPointSDk-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

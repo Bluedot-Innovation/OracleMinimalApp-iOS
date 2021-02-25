@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +11,75 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-Nz-TsX" userLabel="Initialize Button">
+                                <rect key="frame" x="82" y="355" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.37684475810000001" green="0.56442973819999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jgG-RY-hu7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="13"/>
+                                <state key="normal" title="Initialize SDK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="initializeSDKTouchInsideUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wNr-7s-Keb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLg-FQ-kFQ">
+                                <rect key="frame" x="82" y="422" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.37684475810000001" green="0.56442973819999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="qzh-no-kCP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="13"/>
+                                <state key="normal" title="Start GeoTriggering">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTriggeringTouchInsideUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LiC-af-BQK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bW-Cq-KVP">
+                                <rect key="frame" x="82" y="491" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.37684475810000001" green="0.56442973819999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="X7j-P5-byM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="13"/>
+                                <state key="normal" title="Stop GeoTriggering">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopTriggeringTouchInsideUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OIB-LE-QEJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zLg-FQ-kFQ" firstAttribute="trailing" secondItem="HdL-Nz-TsX" secondAttribute="trailing" id="0TK-ui-qf6"/>
+                            <constraint firstItem="HdL-Nz-TsX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ARG-iR-rrA"/>
+                            <constraint firstItem="HdL-Nz-TsX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cpp-lj-HpN"/>
+                            <constraint firstItem="zLg-FQ-kFQ" firstAttribute="leading" secondItem="HdL-Nz-TsX" secondAttribute="leading" id="E5Z-J8-Eyv"/>
+                            <constraint firstItem="5bW-Cq-KVP" firstAttribute="top" secondItem="zLg-FQ-kFQ" secondAttribute="bottom" constant="19" id="HiS-K7-pz5"/>
+                            <constraint firstItem="HdL-Nz-TsX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="311" id="LNC-T3-7yw"/>
+                            <constraint firstItem="zLg-FQ-kFQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LPc-qu-ygn"/>
+                            <constraint firstItem="5bW-Cq-KVP" firstAttribute="trailing" secondItem="zLg-FQ-kFQ" secondAttribute="trailing" id="Pbq-h2-n6y"/>
+                            <constraint firstItem="zLg-FQ-kFQ" firstAttribute="top" secondItem="HdL-Nz-TsX" secondAttribute="bottom" constant="17" id="fsw-uT-b8k"/>
+                            <constraint firstItem="5bW-Cq-KVP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jFN-pC-hMC"/>
+                            <constraint firstItem="5bW-Cq-KVP" firstAttribute="leading" secondItem="zLg-FQ-kFQ" secondAttribute="leading" id="maA-HX-p9v"/>
+                            <constraint firstItem="HdL-Nz-TsX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="82" id="ulW-sW-VR4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="80"/>
         </scene>
     </scenes>
 </document>
