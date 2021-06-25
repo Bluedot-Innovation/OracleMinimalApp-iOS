@@ -5,4 +5,4 @@ To take the full advantage of the Oracle Cloud services, it is mandatory to inte
 At this moment, only iOS and Android mobile applications are supported by the SDK. 
 This page contains steps on how to update your mobile app’s source and integrate the app with Bluedot Point SDK.
 
-Please refer integration steps mentioned at : https://docs.bluedot.io/oracle-integration/
+Please refer integration steps mentioned at : https://docs.bluedot.io/integrations/oracle-integration/
