@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */; };
+		9134A72F27BCBE9200DA519C /* BDPoint.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */; };
+		9134A73027BCBE9200DA519C /* BDPoint.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		913AD08B27BC9AD500A7BD84 /* hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913AD08A27BC9AD500A7BD84 /* hello.swift */; };
 		91670575226F330800789E45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9167056F226F330800789E45 /* UIKit.framework */; };
 		91670576226F330800789E45 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670570226F330800789E45 /* CoreLocation.framework */; };
 		91670577226F330800789E45 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670571226F330800789E45 /* SystemConfiguration.framework */; };
@@ -15,8 +18,6 @@
 		91670579226F330800789E45 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670573226F330800789E45 /* MapKit.framework */; };
 		9167057A226F330800789E45 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670574226F330800789E45 /* CoreMotion.framework */; };
 		919BEADC2276B7A500EC9410 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919BEADB2276B7A500EC9410 /* Empty.swift */; };
-		919BEAF122795B0400EC9410 /* BDPointSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF022795B0400EC9410 /* BDPointSDK.framework */; };
-		919BEAF222795B0B00EC9410 /* BDPointSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF022795B0400EC9410 /* BDPointSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		919BEAF7227A621100EC9410 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF6227A621100EC9410 /* libsqlite3.0.tbd */; };
 		919BEAF9227A624700EC9410 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF8227A624700EC9410 /* UserNotifications.framework */; };
 		919BEAFB227A628200EC9410 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAFA227A628100EC9410 /* WebKit.framework */; };
@@ -30,13 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		919BEAD62276B5CF00EC9410 /* Embed Frameworks */ = {
+		9134A73127BCBE9200DA519C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				919BEAF222795B0B00EC9410 /* BDPointSDK.framework in Embed Frameworks */,
+				9134A73027BCBE9200DA519C /* BDPoint.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
+		913AD08A27BC9AD500A7BD84 /* hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello.swift; sourceTree = "<group>"; };
+		9160FED527BB2148001AEA99 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
+		9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = BDPoint.xcframework; sourceTree = "<group>"; };
 		9167056F226F330800789E45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91670570226F330800789E45 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		91670571226F330800789E45 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -83,7 +87,7 @@
 				91670576226F330800789E45 /* CoreLocation.framework in Frameworks */,
 				78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */,
 				91670577226F330800789E45 /* SystemConfiguration.framework in Frameworks */,
-				919BEAF122795B0400EC9410 /* BDPointSDK.framework in Frameworks */,
+				9134A72F27BCBE9200DA519C /* BDPoint.xcframework in Frameworks */,
 				91670578226F330800789E45 /* CoreData.framework in Frameworks */,
 				91670579226F330800789E45 /* MapKit.framework in Frameworks */,
 				9167057A226F330800789E45 /* CoreMotion.framework in Frameworks */,
@@ -96,6 +100,7 @@
 		9167056E226F330700789E45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */,
 				78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */,
 				919BEAFA227A628100EC9410 /* WebKit.framework */,
 				919BEAF8227A624700EC9410 /* UserNotifications.framework */,
@@ -115,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				91F022BE226F2529002F2EFB /* BDHelloPointSDk */,
+				9160FED527BB2148001AEA99 /* PushIOManager.framework */,
 				91F022BD226F2529002F2EFB /* Products */,
 				9167056E226F330700789E45 /* Frameworks */,
 			);
@@ -158,7 +164,7 @@
 				91F022B8226F2528002F2EFB /* Sources */,
 				91F022B9226F2528002F2EFB /* Frameworks */,
 				91F022BA226F2528002F2EFB /* Resources */,
-				919BEAD62276B5CF00EC9410 /* Embed Frameworks */,
+				9134A73127BCBE9200DA519C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -175,7 +181,7 @@
 		91F022B4226F2528002F2EFB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = Bluedot;
 				TargetAttributes = {
 					91F022BB226F2528002F2EFB = {
@@ -228,6 +234,7 @@
 			files = (
 				91F022C4226F2529002F2EFB /* ViewController.m in Sources */,
 				919BEADC2276B7A500EC9410 /* Empty.swift in Sources */,
+				913AD08B27BC9AD500A7BD84 /* hello.swift in Sources */,
 				91F022CF226F252A002F2EFB /* main.m in Sources */,
 				91F022C1226F2529002F2EFB /* AppDelegate.m in Sources */,
 			);
@@ -281,13 +288,14 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -311,6 +319,8 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -362,7 +372,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -372,9 +385,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BDHelloPointSDk/BDHelloPointSDk.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 9H7C75E224;
 				ENABLE_BITCODE = NO;
@@ -386,7 +401,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BDHelloPointSDk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,10 +416,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluedotinnovation.BDHelloPointSDk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Oracle Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "BDHelloPointSDk/BDHelloPointSDk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 			};
@@ -415,9 +431,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BDHelloPointSDk/BDHelloPointSDk.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 9H7C75E224;
 				ENABLE_BITCODE = NO;
@@ -429,7 +447,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BDHelloPointSDk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,9 +458,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluedotinnovation.BDHelloPointSDk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Oracle Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "BDHelloPointSDk/BDHelloPointSDk-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 			};
