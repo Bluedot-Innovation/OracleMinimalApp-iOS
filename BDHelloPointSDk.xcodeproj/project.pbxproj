@@ -3,21 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */; };
-		9134A72F27BCBE9200DA519C /* BDPoint.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */; };
-		9134A73027BCBE9200DA519C /* BDPoint.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		913AD08B27BC9AD500A7BD84 /* hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913AD08A27BC9AD500A7BD84 /* hello.swift */; };
+		9134A73927BCCEE900DA519C /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9134A73827BCCEE900DA519C /* PushIOManager.framework */; };
+		9134A74427BE0B4D00DA519C /* BDPointSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF022795B0400EC9410 /* BDPointSDK.framework */; };
 		91670575226F330800789E45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9167056F226F330800789E45 /* UIKit.framework */; };
 		91670576226F330800789E45 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670570226F330800789E45 /* CoreLocation.framework */; };
 		91670577226F330800789E45 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670571226F330800789E45 /* SystemConfiguration.framework */; };
 		91670578226F330800789E45 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670572226F330800789E45 /* CoreData.framework */; };
 		91670579226F330800789E45 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670573226F330800789E45 /* MapKit.framework */; };
 		9167057A226F330800789E45 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670574226F330800789E45 /* CoreMotion.framework */; };
-		919BEADC2276B7A500EC9410 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919BEADB2276B7A500EC9410 /* Empty.swift */; };
 		919BEAF7227A621100EC9410 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF6227A621100EC9410 /* libsqlite3.0.tbd */; };
 		919BEAF9227A624700EC9410 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF8227A624700EC9410 /* UserNotifications.framework */; };
 		919BEAFB227A628200EC9410 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAFA227A628100EC9410 /* WebKit.framework */; };
@@ -30,23 +28,10 @@
 		91F022CF226F252A002F2EFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F022CE226F252A002F2EFB /* main.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		9134A73127BCBE9200DA519C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9134A73027BCBE9200DA519C /* BDPoint.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
-		913AD08A27BC9AD500A7BD84 /* hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello.swift; sourceTree = "<group>"; };
+		9134A73827BCCEE900DA519C /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
+		9134A73D27BCCF5C00DA519C /* BDPointSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BDPointSDK.framework; path = "Carthage/Checkouts/PointSDK-iOS/PointSDK/BDPointSDK.framework"; sourceTree = "<group>"; };
 		9160FED527BB2148001AEA99 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
 		9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = BDPoint.xcframework; sourceTree = "<group>"; };
 		9167056F226F330800789E45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -55,8 +40,6 @@
 		91670572226F330800789E45 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		91670573226F330800789E45 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		91670574226F330800789E45 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		919BEADA2276B7A500EC9410 /* BDHelloPointSDk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BDHelloPointSDk-Bridging-Header.h"; sourceTree = "<group>"; };
-		919BEADB2276B7A500EC9410 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		919BEAF022795B0400EC9410 /* BDPointSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BDPointSDK.framework; path = Carthage/Build/iOS/BDPointSDK.framework; sourceTree = "<group>"; };
 		919BEAF5227A61CC00EC9410 /* BDHelloPointSDk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BDHelloPointSDk.entitlements; sourceTree = "<group>"; };
 		919BEAF6227A621100EC9410 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -84,10 +67,11 @@
 				919BEAF9227A624700EC9410 /* UserNotifications.framework in Frameworks */,
 				919BEAF7227A621100EC9410 /* libsqlite3.0.tbd in Frameworks */,
 				91670575226F330800789E45 /* UIKit.framework in Frameworks */,
+				9134A73927BCCEE900DA519C /* PushIOManager.framework in Frameworks */,
 				91670576226F330800789E45 /* CoreLocation.framework in Frameworks */,
+				9134A74427BE0B4D00DA519C /* BDPointSDK.framework in Frameworks */,
 				78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */,
 				91670577226F330800789E45 /* SystemConfiguration.framework in Frameworks */,
-				9134A72F27BCBE9200DA519C /* BDPoint.xcframework in Frameworks */,
 				91670578226F330800789E45 /* CoreData.framework in Frameworks */,
 				91670579226F330800789E45 /* MapKit.framework in Frameworks */,
 				9167057A226F330800789E45 /* CoreMotion.framework in Frameworks */,
@@ -97,9 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9134A73727BCCD5900DA519C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		9167056E226F330700789E45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9134A73D27BCCF5C00DA519C /* BDPointSDK.framework */,
 				9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */,
 				78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */,
 				919BEAFA227A628100EC9410 /* WebKit.framework */,
@@ -121,8 +113,10 @@
 			children = (
 				91F022BE226F2529002F2EFB /* BDHelloPointSDk */,
 				9160FED527BB2148001AEA99 /* PushIOManager.framework */,
+				9134A73827BCCEE900DA519C /* PushIOManager.framework */,
 				91F022BD226F2529002F2EFB /* Products */,
 				9167056E226F330700789E45 /* Frameworks */,
+				9134A73727BCCD5900DA519C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,8 +142,6 @@
 				91F022CA226F252A002F2EFB /* LaunchScreen.storyboard */,
 				91F022CD226F252A002F2EFB /* Info.plist */,
 				91F022CE226F252A002F2EFB /* main.m */,
-				919BEADB2276B7A500EC9410 /* Empty.swift */,
-				919BEADA2276B7A500EC9410 /* BDHelloPointSDk-Bridging-Header.h */,
 			);
 			path = BDHelloPointSDk;
 			sourceTree = "<group>";
@@ -164,7 +156,7 @@
 				91F022B8226F2528002F2EFB /* Sources */,
 				91F022B9226F2528002F2EFB /* Frameworks */,
 				91F022BA226F2528002F2EFB /* Resources */,
-				9134A73127BCBE9200DA519C /* Embed Frameworks */,
+				9134A74727BE0B6D00DA519C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -227,14 +219,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9134A74727BE0B6D00DA519C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BDPointSDK.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/Output/BDPointSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		91F022B8226F2528002F2EFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				91F022C4226F2529002F2EFB /* ViewController.m in Sources */,
-				919BEADC2276B7A500EC9410 /* Empty.swift in Sources */,
-				913AD08B27BC9AD500A7BD84 /* hello.swift in Sources */,
 				91F022CF226F252A002F2EFB /* main.m in Sources */,
 				91F022C1226F2529002F2EFB /* AppDelegate.m in Sources */,
 			);
@@ -399,6 +411,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/BDHelloPointSDk",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/PointSDK-iOS/PointSDK",
 				);
 				INFOPLIST_FILE = BDHelloPointSDk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -445,6 +458,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/BDHelloPointSDk",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/PointSDK-iOS/PointSDK",
 				);
 				INFOPLIST_FILE = BDHelloPointSDk/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
