@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */; };
-		9134A73927BCCEE900DA519C /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9134A73827BCCEE900DA519C /* PushIOManager.framework */; };
 		9134A74427BE0B4D00DA519C /* BDPointSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BEAF022795B0400EC9410 /* BDPointSDK.framework */; };
 		91670575226F330800789E45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9167056F226F330800789E45 /* UIKit.framework */; };
 		91670576226F330800789E45 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91670570226F330800789E45 /* CoreLocation.framework */; };
@@ -30,10 +29,7 @@
 
 /* Begin PBXFileReference section */
 		78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
-		9134A73827BCCEE900DA519C /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
 		9134A73D27BCCF5C00DA519C /* BDPointSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BDPointSDK.framework; path = "Carthage/Checkouts/PointSDK-iOS/PointSDK/BDPointSDK.framework"; sourceTree = "<group>"; };
-		9160FED527BB2148001AEA99 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PushIOManager.framework; sourceTree = "<group>"; };
-		9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = BDPoint.xcframework; sourceTree = "<group>"; };
 		9167056F226F330800789E45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91670570226F330800789E45 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		91670571226F330800789E45 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -67,7 +63,6 @@
 				919BEAF9227A624700EC9410 /* UserNotifications.framework in Frameworks */,
 				919BEAF7227A621100EC9410 /* libsqlite3.0.tbd in Frameworks */,
 				91670575226F330800789E45 /* UIKit.framework in Frameworks */,
-				9134A73927BCCEE900DA519C /* PushIOManager.framework in Frameworks */,
 				91670576226F330800789E45 /* CoreLocation.framework in Frameworks */,
 				9134A74427BE0B4D00DA519C /* BDPointSDK.framework in Frameworks */,
 				78028E9B25DA47E7003A9BF4 /* PushIOManager.framework in Frameworks */,
@@ -81,18 +76,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9134A73727BCCD5900DA519C /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		9167056E226F330700789E45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				9134A73D27BCCF5C00DA519C /* BDPointSDK.framework */,
-				9160FEDB27BC7C19001AEA99 /* BDPoint.xcframework */,
 				78028E9A25DA47E7003A9BF4 /* PushIOManager.framework */,
 				919BEAFA227A628100EC9410 /* WebKit.framework */,
 				919BEAF8227A624700EC9410 /* UserNotifications.framework */,
@@ -112,11 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				91F022BE226F2529002F2EFB /* BDHelloPointSDk */,
-				9160FED527BB2148001AEA99 /* PushIOManager.framework */,
-				9134A73827BCCEE900DA519C /* PushIOManager.framework */,
 				91F022BD226F2529002F2EFB /* Products */,
 				9167056E226F330700789E45 /* Frameworks */,
-				9134A73727BCCD5900DA519C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
