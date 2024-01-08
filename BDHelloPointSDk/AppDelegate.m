@@ -24,15 +24,13 @@
 
 @implementation AppDelegate
 
-
-NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     //Assign the delegates for session handling and location updates to this class.
     BDLocationManager.instance.geoTriggeringEventDelegate = self;
     
+    // Configure the Oracle Responsys SDK
 #ifdef DEBUG
     [[PushIOManager sharedInstance] setLoggingEnabled:YES];
     [[PushIOManager sharedInstance] setLogLevel:PIOLogLevelInfo]; //PIOLogLevelWarn or PIOLogLevelError
@@ -46,50 +44,46 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
     [PushIOManager sharedInstance].configType = PIOConfigTypeRelease;//load pushio_config.json
 #endif
     
-    NSString *apiKey = nil;
-    NSString *accountToken = nil;
-    
+    // Configure the Oracle Responsys SDK. Please make sure your `config.json` files are in the app bundle.
+    NSString *configName = @"config.json";
 #ifdef DEBUG
-    apiKey = @"PUSHIO-API-KEY"; //Copy the apiKey value from pushio_config_debug.json
-    accountToken = @"PUSHIO-ACCOUNT-TOKEN"; //Copy the accountToken value from pushio_config_debug.json. Assign nil if no value available.
-#else
-    apiKey = @"PUSHIO-API-KEY"; //Copy the apiKey value from pushio_config.json.
-    accountToken = @"PUSHIO-ACCOUNT-TOKEN";//Copy the accountToken value from pushio_config.json. Assign nil if no value available.
+    configName = @"pushio_config_debug.json";  // (Optional) If you want to configure app for iOS Development/Sandbox Pushs.
 #endif
-    
-    NSError *error = nil;
-    [[PushIOManager sharedInstance] configureWithAPIKey:apiKey accountToken:accountToken error:&error];
-    if(nil == error)
-    {
-        NSLog(@"SDK Configured Successfully");
-    }
-    else
-    {
-        NSLog(@"Unable to configure SDK, reason: %@", error.description);
-    }
-    
-    // Requests a device token from Apple
-    [[PushIOManager sharedInstance] registerForAllRemoteNotificationTypes:^(NSError *error, NSString *deviceToken)
-     {
-         if (nil == error) {
-             NSError *regTrackError = nil;
-             [[PushIOManager sharedInstance] registerApp:&regTrackError completionHandler:^(NSError *regAppError, NSString *response)
-              {
-                  if (nil == regAppError){
-                      NSLog(@"Application registered successfully!");
-                  }else{
-                      NSLog(@"Unable to register application, reason: %@", regAppError.description);
-                  }
-              }];
-             if (nil == regTrackError) {
-                 NSLog(@"Registration locally stored successfully.");
-             }else{
-                 NSLog(@"Unable to store registration, reason: %@", regTrackError.description);
+
+    [[PushIOManager sharedInstance] configureWithFileName:configName completionHandler:^(NSError *configError, NSString *response) {
+        if (configError != nil) {
+            NSLog(@"Unable to configure PushIOManager SDK, reason: %@", configError.description);
+            return;
+        } else {
+            NSLog(@"PushIOManager SDK Configured Successfully");
+        }
+
+        // Requests a device token from Apple
+        [[PushIOManager sharedInstance] registerForAllRemoteNotificationTypes:^(NSError *error, NSString *deviceToken) {
+             if (nil == error) {
+                 
+                 // Register application with Responsys server. This API is responsible to send registration signal to Responsys server.
+                 // This API sends all the values configured on SDK to server
+                 NSError *regTrackError = nil;
+                 [[PushIOManager sharedInstance] registerApp:&regTrackError completionHandler:^(NSError *regAppError, NSString *response) {
+                      if (nil == regAppError) {
+                          NSLog(@"Application registered successfully!");
+                      } else {
+                          NSLog(@"Unable to register application, reason: %@", regAppError.description);
+                      }
+                  }];
+                 if (nil == regTrackError) {
+                     NSLog(@"Registration locally stored successfully.");
+                 } else {
+                     NSLog(@"Unable to store registration, reason: %@", regTrackError.description);
+                 }
              }
-         }
-     }];
+         }];
+    }];
     
+    // Call the didFinishLaunching of SDK at end
     [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
+    
     // Override point for customization after application launch.
     [UNUserNotificationCenter currentNotificationCenter].delegate= self;
     
@@ -100,7 +94,7 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
     [center requestAuthorizationWithOptions:options
                           completionHandler:^(BOOL granted, NSError * _Nullable error) {
                               if (!granted) {
-                                  NSLog(@"notification error");
+                                  NSLog(@"Notification error");
                               }
                           }];
     return YES;
@@ -134,15 +128,13 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
 }
 
 
-//MARK:- Conform to BDPGeoTriggering protocol - call-backs which Point SDK makes to inform the Application of geo-triggering related events
+#pragma mark - Conform to BDPGeoTriggering protocol - call-backs which Point SDK makes to inform the Application of geo-triggering related events
 
-- (void)onZoneInfoUpdate:(NSSet<BDZoneInfo *> *)zoneInfos
-{
+- (void)onZoneInfoUpdate:(NSSet<BDZoneInfo *> *)zoneInfos {
     NSLog( @"Point sdk updated with %lu zones", (unsigned long)zoneInfos.count );
 }
 
-- (void)didEnterZone:(BDZoneEntryEvent *)enterEvent
-{
+- (void)didEnterZone:(BDZoneEntryEvent *)enterEvent {
     NSLog(@"didEnterZone %@", enterEvent.zone.name);
     
     PIOGeoRegion *geoRegion = [[PIOGeoRegion alloc] initWithGeofenceId:enterEvent.fence.ID
@@ -158,24 +150,21 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
     [[PushIOManager sharedInstance] didEnterGeoRegion:geoRegion completionHandler:^(NSError *error, NSString *response) {
         if (nil == error) {
             NSLog(@"Geofence Entry Event triggered successfully");
-        }
-        else {
+        } else {
             NSLog(@"Unable to send Geofence Entry Event, reason: %@", error.description);
         }
     }];
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     [_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSString *formattedDate = [ _dateFormatter stringFromDate: enterEvent.location.timestamp ];
+    NSString *formattedDate = [_dateFormatter stringFromDate: enterEvent.location.timestamp];
     
-    NSString *message = [ NSString stringWithFormat: @"You have checked into fence '%@' in zone '%@', at %@",enterEvent.fence.name, enterEvent.zone.name, formattedDate ];
+    NSString *message = [NSString stringWithFormat: @"You have checked into fence '%@' in zone '%@', at %@",enterEvent.fence.name, enterEvent.zone.name, formattedDate];
     
-    [ self showAlert: message ];
-    
+    [self showAlert: message];
 }
 
-- (void)didExitZone:(BDZoneExitEvent *)exitEvent
-{
+- (void)didExitZone:(BDZoneExitEvent *)exitEvent {
     NSLog(@"didExitZone %@", exitEvent.zone.name);
           
     PIOGeoRegion *geoRegion = [[PIOGeoRegion alloc]
@@ -188,6 +177,7 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
         zoneName:exitEvent.zone.name
         dwellTime:exitEvent.duration
         extra:exitEvent.zone.customData];
+    
     [[PushIOManager sharedInstance] didExitGeoRegion:geoRegion completionHandler:^(NSError *error, NSString *response) {
         if (nil == error) {
             NSLog(@"Geofence Exit Event triggered successfully");
@@ -196,37 +186,33 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
         }
     }];
     
-    NSString *message = [ NSString stringWithFormat: @"You left '%@' in zone '%@' after %lu minutes",exitEvent.fence.name, exitEvent.zone.name, (unsigned long)exitEvent.duration ];
+    NSString *message = [NSString stringWithFormat: @"You left '%@' in zone '%@' after %lu minutes",exitEvent.fence.name, exitEvent.zone.name, (unsigned long)exitEvent.duration];
     
-    [ self showAlert: message ];
+    [self showAlert: message];
 }
 
+#pragma mark - Private
 
-- (void)showAlert: (NSString *)message
-{
+- (void)showAlert: (NSString *)message {
     UIApplicationState applicationState = UIApplication.sharedApplication.applicationState;
     
-    switch( applicationState )
-    {
+    switch (applicationState) {
             // In the foreground: display notification directly to the user
-        case UIApplicationStateActive:
-        {
-            UIAlertController *alertController = [ UIAlertController alertControllerWithTitle:
-                                                  @"Application notification"
-                                                                                      message: message
-                                                                               preferredStyle: UIAlertControllerStyleAlert ];
+        case UIApplicationStateActive: {
+            UIAlertController *alertController = [ UIAlertController alertControllerWithTitle:@"Application notification"
+                                                                                      message:message
+                                                                               preferredStyle:UIAlertControllerStyleAlert ];
             
-            UIAlertAction *OK = [ UIAlertAction actionWithTitle: @"OK" style: UIAlertActionStyleCancel handler: nil ];
+            UIAlertAction *OK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil ];
             
-            [ alertController addAction:OK ];
+            [alertController addAction:OK];
             
-            [self.window.rootViewController presentViewController: alertController animated: YES completion: nil];
-        }
+            [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
             break;
+        }
             
             // If not in the foreground: deliver a local notification
-        default:
-        {
+        default: {
             UNMutableNotificationContent *content = [UNMutableNotificationContent new];
             content.title = @"BDPoint Notification";
             content.body = message;
@@ -242,46 +228,45 @@ NSString  *EXResponseError = @"BDResponseErrorInfoKeyName";
                     NSLog(@"Notification error: %@",error);
                 }
             }];
-        }
             break;
+        }
     }
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:
-(NSData *)deviceToken
-{
+#pragma mark - AppDelegates Push Notification Service
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken {
     [[PushIOManager sharedInstance]  didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [[PushIOManager sharedInstance]  didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:
-(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
     [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo
-                                           fetchCompletionResult:UIBackgroundFetchResultNewData fetchCompletionHandler:completionHandler];
+                                           fetchCompletionResult:UIBackgroundFetchResultNewData
+                                          fetchCompletionHandler:completionHandler];
 }
 
-//iOS 10
--(void) userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:
-(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler
-{
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    [[PushIOManager sharedInstance] openURL:url options:options];
+    return YES;
+}
+
+-(void) userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void(^)(void))completionHandler {
+    
     [[PushIOManager sharedInstance] userNotificationCenter:center didReceiveNotificationResponse:response
                                      withCompletionHandler:completionHandler];
 }
 
--(void) userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:
-(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
-{
-    [[PushIOManager sharedInstance] userNotificationCenter:center willPresentNotification:notification
+-(void) userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+    [[PushIOManager sharedInstance] userNotificationCenter:center
+                                   willPresentNotification:notification
                                      withCompletionHandler:completionHandler];
 }
 

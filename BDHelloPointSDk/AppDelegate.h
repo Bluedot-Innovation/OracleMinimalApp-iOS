@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 //Import PushIOManager
 #import <PushIOManager/PushIOManager.h>
-
-//iOS 10:
 #import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UNUserNotificationCenterDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 
 @end
 
