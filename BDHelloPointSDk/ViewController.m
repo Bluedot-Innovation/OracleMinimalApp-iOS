@@ -17,7 +17,6 @@
 
 NSString  *projectId = @"YourBluedotProjectId";
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [BDLocationManager.instance requestWhenInUseAuthorization];
@@ -26,7 +25,7 @@ NSString  *projectId = @"YourBluedotProjectId";
 - (IBAction)initializeSDKTouchInsideUp:(id)sender {
     if(![BDLocationManager.instance isInitialized]){
         [BDLocationManager.instance initializeWithProjectId:projectId completion:^(NSError * _Nullable error) {
-            if(error != nil){
+            if(error != nil) {
                 NSLog(@"Initialization Error");
             }
             [BDLocationManager.instance requestAlwaysAuthorization];
@@ -36,7 +35,7 @@ NSString  *projectId = @"YourBluedotProjectId";
 
 - (IBAction)startTriggeringTouchInsideUp:(id)sender {
     [BDLocationManager.instance startGeoTriggeringWithCompletion: ^(NSError * _Nullable error) {
-        if(error != nil){
+        if(error != nil) {
             NSLog(@"Start Geotrigerring Error");
         }
     }];
@@ -44,7 +43,7 @@ NSString  *projectId = @"YourBluedotProjectId";
 
 - (IBAction)stopTriggeringTouchInsideUp:(id)sender {
     [BDLocationManager.instance stopGeoTriggeringWithCompletion: ^(NSError * _Nullable error) {
-        if(error != nil){
+        if(error != nil) {
             NSLog(@"Stop Geotrigerring Error");
         }
     }];
