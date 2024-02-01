@@ -15,7 +15,7 @@
 
 @implementation ViewController
 
-NSString  *projectId = @"d8267470-24ea-435e-86ad-08fd39b7fb4d";
+NSString  *projectId = @"YourBluedotProjectId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
