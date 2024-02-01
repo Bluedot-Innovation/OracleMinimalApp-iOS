@@ -131,21 +131,30 @@
 #pragma mark - Conform to BDPGeoTriggering protocol - call-backs which Point SDK makes to inform the Application of geo-triggering related events
 
 - (void)onZoneInfoUpdate:(NSSet<BDZoneInfo *> *)zoneInfos {
-    NSLog( @"Point sdk updated with %lu zones", (unsigned long)zoneInfos.count );
+    NSLog(@"Point sdk updated with %lu zones", (unsigned long)zoneInfos.count);
 }
 
-- (void)didEnterZone:(BDZoneEntryEvent *)enterEvent {
-    NSLog(@"didEnterZone %@", enterEvent.zone.name);
+- (void)didEnterZone:(nonnull GeoTriggerEvent *)triggerEvent {
+    NSLog(@"didEnterZone %@", triggerEvent.zoneInfo.name);
     
-    PIOGeoRegion *geoRegion = [[PIOGeoRegion alloc] initWithGeofenceId:enterEvent.fence.ID
-        geofenceName:enterEvent.fence.name
-        speed:enterEvent.location.speed
-        bearing:enterEvent.location.bearing
-        source:@"BDPointSDK"
-        zoneId:enterEvent.zone.ID
-        zoneName:enterEvent.zone.name
-        dwellTime:0
-        extra:enterEvent.zone.customData];
+    CLLocationSpeed speed = 0.0;
+    double course = 0.0;
+    NSDate *timestamp = nil;
+    if (triggerEvent.entryEvent.crossedFences.count > 0) {
+        speed = triggerEvent.entryEvent.crossedFences[0].location.speed;
+        course = triggerEvent.entryEvent.crossedFences[0].location.course;
+        timestamp = triggerEvent.entryEvent.crossedFences[0].location.timestamp;
+    }
+    
+    PIOGeoRegion *geoRegion = [[PIOGeoRegion alloc] initWithGeofenceId:triggerEvent.entryEvent.fenceId.UUIDString
+                                                          geofenceName:triggerEvent.entryEvent.fenceName
+                                                                 speed:speed
+                                                               bearing:course
+                                                                source:@"BDPointSDK"
+                                                                zoneId:triggerEvent.zoneInfo.id.UUIDString
+                                                              zoneName:triggerEvent.zoneInfo.name
+                                                             dwellTime:0
+                                                                 extra:triggerEvent.zoneInfo.customData];
   
     [[PushIOManager sharedInstance] didEnterGeoRegion:geoRegion completionHandler:^(NSError *error, NSString *response) {
         if (nil == error) {
@@ -157,26 +166,31 @@
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     [_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSString *formattedDate = [_dateFormatter stringFromDate: enterEvent.location.timestamp];
+    NSString *formattedDate = @"";
+    if (timestamp) {
+        formattedDate = [_dateFormatter stringFromDate: timestamp];
+    }
     
-    NSString *message = [NSString stringWithFormat: @"You have checked into fence '%@' in zone '%@', at %@",enterEvent.fence.name, enterEvent.zone.name, formattedDate];
+    NSString *message = [NSString stringWithFormat: @"You have checked into fence '%@' in zone '%@', at %@",
+                         triggerEvent.entryEvent.fenceName,
+                         triggerEvent.zoneInfo.name,
+                         formattedDate];
     
     [self showAlert: message];
 }
 
-- (void)didExitZone:(BDZoneExitEvent *)exitEvent {
-    NSLog(@"didExitZone %@", exitEvent.zone.name);
+- (void)didExitZone:(GeoTriggerEvent *)triggerEvent {
+    NSLog(@"didExitZone %@", triggerEvent.zoneInfo.name);
           
-    PIOGeoRegion *geoRegion = [[PIOGeoRegion alloc]
-        initWithGeofenceId:exitEvent.fence.ID
-        geofenceName:exitEvent.fence.name
-        speed:0.0
-        bearing:0.0
-        source:@"BDPointSDK"
-        zoneId:exitEvent.zone.ID
-        zoneName:exitEvent.zone.name
-        dwellTime:exitEvent.duration
-        extra:exitEvent.zone.customData];
+    PIOGeoRegion *geoRegion = [[PIOGeoRegion alloc] initWithGeofenceId:triggerEvent.zoneInfo.id.UUIDString
+                                                          geofenceName:triggerEvent.exitEvent.fenceName
+                                                                 speed:0.0
+                                                               bearing:0.0
+                                                                source:@"BDPointSDK"
+                                                                zoneId:triggerEvent.zoneInfo.id.UUIDString
+                                                              zoneName:triggerEvent.zoneInfo.name
+                                                             dwellTime:triggerEvent.exitEvent.dwellTime
+                                                                 extra:triggerEvent.zoneInfo.customData];
     
     [[PushIOManager sharedInstance] didExitGeoRegion:geoRegion completionHandler:^(NSError *error, NSString *response) {
         if (nil == error) {
@@ -186,26 +200,26 @@
         }
     }];
     
-    NSString *message = [NSString stringWithFormat: @"You left '%@' in zone '%@' after %lu minutes",exitEvent.fence.name, exitEvent.zone.name, (unsigned long)exitEvent.duration];
+    NSString *message = [NSString stringWithFormat: @"You left '%@' in zone '%@' after %lu minutes",
+                         triggerEvent.exitEvent.fenceName, triggerEvent.zoneInfo.name, (unsigned long)triggerEvent.exitEvent.dwellTime];
     
     [self showAlert: message];
 }
 
 #pragma mark - Private
 
-- (void)showAlert: (NSString *)message {
+- (void)showAlert:(NSString *)message {
     UIApplicationState applicationState = UIApplication.sharedApplication.applicationState;
     
     switch (applicationState) {
             // In the foreground: display notification directly to the user
         case UIApplicationStateActive: {
-            UIAlertController *alertController = [ UIAlertController alertControllerWithTitle:@"Application notification"
-                                                                                      message:message
-                                                                               preferredStyle:UIAlertControllerStyleAlert ];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Application notification"
+                                                                                     message:message
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *OK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil ];
-            
-            [alertController addAction:OK];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction: okAction];
             
             [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
             break;
@@ -225,7 +239,7 @@
             
             [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
                 if (error != nil) {
-                    NSLog(@"Notification error: %@",error);
+                    NSLog(@"Notification error: %@", error);
                 }
             }];
             break;
@@ -235,7 +249,7 @@
 
 #pragma mark - AppDelegates Push Notification Service
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken: (NSData *)deviceToken {
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[PushIOManager sharedInstance]  didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
@@ -244,7 +258,6 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
     [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo
                                            fetchCompletionResult:UIBackgroundFetchResultNewData
                                           fetchCompletionHandler:completionHandler];
@@ -255,14 +268,13 @@
     return YES;
 }
 
--(void) userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void(^)(void))completionHandler {
-    
     [[PushIOManager sharedInstance] userNotificationCenter:center didReceiveNotificationResponse:response
                                      withCompletionHandler:completionHandler];
 }
 
--(void) userNotificationCenter:(UNUserNotificationCenter *)center
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center
        willPresentNotification:(UNNotification *)notification
          withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
     [[PushIOManager sharedInstance] userNotificationCenter:center
