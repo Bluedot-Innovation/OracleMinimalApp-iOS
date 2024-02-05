@@ -1,1 +1,1 @@
-github "Bluedot-Innovation/PointSDK-iOS"
+github "Bluedot-Innovation/PointSDK-iOS" ~> 16.0.0-RC8

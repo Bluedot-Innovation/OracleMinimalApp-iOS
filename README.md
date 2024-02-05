@@ -14,7 +14,7 @@ Please refer integration steps mentioned at : https://docs.bluedot.io/integratio
 
 ### Development environment
 The code sources have been aligned with:
-- XCode version 15.0.1
+- XCode version 15.1.0
 - Oracle Responsys Mobile SDK 6.56.1
 - iOS 12+
 
